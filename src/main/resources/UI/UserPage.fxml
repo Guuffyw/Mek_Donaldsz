@@ -1,14 +1,293 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
+<AnchorPane xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="Controllers.UserController"
-            prefHeight="400.0" prefWidth="600.0">
+            prefWidth="1200" prefHeight="900"
+            minWidth="800" minHeight="600"
+            style="-fx-background-color: linear-gradient(to bottom, #12372A, #1a4d38);">
+
+    <!-- Main Content Container -->
+    <StackPane AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
+               AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+
+        <VBox alignment="CENTER" spacing="30" maxWidth="600">
+
+            <!-- Header Section -->
+            <VBox alignment="CENTER" spacing="10">
+                <Text text="👤" fill="WHITE">
+                    <font>
+                        <Font size="60"/>
+                    </font>
+                    <effect>
+                        <DropShadow radius="10" color="#2E8B5799"/>
+                    </effect>
+                </Text>
+
+                <Text text="MY PROFILE" fill="#ADDFAD">
+                    <font>
+                        <Font name="System Bold" size="28"/>
+                    </font>
+                </Text>
+
+                <Text text="View your account details" fill="#FFFFFF" opacity="0.8">
+                    <font>
+                        <Font size="14"/>
+                    </font>
+                </Text>
+            </VBox>
+
+            <!-- Profile Card -->
+            <VBox alignment="CENTER" spacing="25"
+                  style="-fx-background-color: rgba(255, 255, 255, 0.98);
+                         -fx-background-radius: 25;
+                         -fx-padding: 40 50;"
+                  maxWidth="550" minWidth="400">
+                <effect>
+                    <DropShadow radius="25" spread="0.2" color="#00000055"/>
+                </effect>
+
+                <!-- Profile Title -->
+                <Text text="Account Information" fill="#12372A">
+                    <font>
+                        <Font name="System Bold" size="24"/>
+                    </font>
+                </Text>
+
+                <!-- User Info Section -->
+                <VBox spacing="20" alignment="CENTER">
+                    <VBox.margin>
+                        <Insets top="10"/>
+                    </VBox.margin>
+
+                    <!-- Username -->
+                    <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-padding: 15; -fx-background-color: #f9f9f9; -fx-background-radius: 12;">
+                        <Text text="👤" fill="#2E8B57">
+                            <font>
+                                <Font size="20"/>
+                            </font>
+                        </Text>
+                        <VBox spacing="3">
+                            <Text text="Username" fill="#666666">
+                                <font>
+                                    <Font size="12"/>
+                                </font>
+                            </Text>
+                            <Text fx:id="usernameText" text="Loading..." fill="#12372A">
+                                <font>
+                                    <Font name="System Bold" size="16"/>
+                                </font>
+                            </Text>
+                        </VBox>
+                    </HBox>
+
+                    <!-- Points and Rank Row -->
+                    <HBox spacing="15" alignment="CENTER">
+                        <!-- Points -->
+                        <VBox alignment="CENTER" spacing="5" style="-fx-padding: 20; -fx-background-color: #f9f9f9; -fx-background-radius: 12;" HBox.hgrow="ALWAYS">
+                            <Text text="⭐" fill="#2E8B57">
+                                <font>
+                                    <Font size="20"/>
+                                </font>
+                            </Text>
+                            <Text text="Points" fill="#666666">
+                                <font>
+                                    <Font size="12"/>
+                                </font>
+                            </Text>
+                            <Text fx:id="pointsText" text="0" fill="#12372A">
+                                <font>
+                                    <Font name="System Bold" size="18"/>
+                                </font>
+                            </Text>
+                        </VBox>
+
+                        <!-- Rank -->
+                        <VBox alignment="CENTER" spacing="5" style="-fx-padding: 20; -fx-background-color: #f9f9f9; -fx-background-radius: 12;" HBox.hgrow="ALWAYS">
+                            <Text text="🏆" fill="#2E8B57">
+                                <font>
+                                    <Font size="20"/>
+                                </font>
+                            </Text>
+                            <Text text="Rank" fill="#666666">
+                                <font>
+                                    <Font size="12"/>
+                                </font>
+                            </Text>
+                            <Text fx:id="rankText" text="Bronze" fill="#12372A">
+                                <font>
+                                    <Font name="System Bold" size="18"/>
+                                </font>
+                            </Text>
+                        </VBox>
+                    </HBox>
+
+                    <!-- Balance Section with Add Functionality -->
+                    <VBox spacing="10" alignment="CENTER" style="-fx-padding: 15; -fx-background-color: #f9f9f9; -fx-background-radius: 12;">
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Text text="💰" fill="#2E8B57">
+                                <font>
+                                    <Font size="20"/>
+                                </font>
+                            </Text>
+                            <VBox spacing="3" HBox.hgrow="ALWAYS">
+                                <Text text="Balance" fill="#666666">
+                                    <font>
+                                        <Font size="12"/>
+                                    </font>
+                                </Text>
+                                <Text fx:id="balanceText" text="0 Ft" fill="#12372A">
+                                    <font>
+                                        <Font name="System Bold" size="16"/>
+                                    </font>
+                                </Text>
+                            </VBox>
+                        </HBox>
+
+                        <!-- Add Balance Section -->
+                        <HBox spacing="10" alignment="CENTER">
+                            <TextField fx:id="balanceInputField"
+                                       promptText="Enter amount..."
+                                       prefWidth="180"
+                                       style="-fx-background-radius: 8;
+                                              -fx-padding: 8 12;
+                                              -fx-font-size: 13;
+                                              -fx-border-color: #ddd;
+                                              -fx-border-radius: 8;
+                                              -fx-border-width: 2;
+                                              -fx-background-color: white;"/>
+                            <Button text="Add"
+                                    onAction="#handleAddBalance"
+                                    prefWidth="80"
+                                    style="-fx-background-color: #2E8B57;
+                                           -fx-text-fill: white;
+                                           -fx-background-radius: 8;
+                                           -fx-font-size: 13;
+                                           -fx-font-weight: bold;
+                                           -fx-padding: 8 15;
+                                           -fx-cursor: hand;">
+                                <effect>
+                                    <DropShadow radius="5" color="#2E8B5733"/>
+                                </effect>
+                            </Button>
+                        </HBox>
+                    </VBox>
+
+                    <!-- Coupons Section -->
+                    <VBox spacing="12" alignment="CENTER">
+                        <Text text="Your Coupons" fill="#12372A">
+                            <font>
+                                <Font name="System Bold" size="16"/>
+                            </font>
+                            <VBox.margin>
+                                <Insets top="5"/>
+                            </VBox.margin>
+                        </Text>
+
+                        <!-- 500Ft Coupons -->
+                        <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-padding: 12; -fx-background-color: #fff8e1; -fx-background-radius: 10; -fx-border-color: #ffc107; -fx-border-radius: 10; -fx-border-width: 2;">
+                            <Text text="🎟️" fill="#f57c00">
+                                <font>
+                                    <Font size="18"/>
+                                </font>
+                            </Text>
+                            <VBox spacing="2" HBox.hgrow="ALWAYS">
+                                <Text text="500 Ft Coupons" fill="#666666">
+                                    <font>
+                                        <Font size="12"/>
+                                    </font>
+                                </Text>
+                                <Text fx:id="coupon500Text" text="0 available" fill="#f57c00">
+                                    <font>
+                                        <Font name="System Bold" size="14"/>
+                                    </font>
+                                </Text>
+                            </VBox>
+                        </HBox>
+
+                        <!-- 1000Ft Coupons -->
+                        <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-padding: 12; -fx-background-color: #e8f5e9; -fx-background-radius: 10; -fx-border-color: #4caf50; -fx-border-radius: 10; -fx-border-width: 2;">
+                            <Text text="🎫" fill="#2e7d32">
+                                <font>
+                                    <Font size="18"/>
+                                </font>
+                            </Text>
+                            <VBox spacing="2" HBox.hgrow="ALWAYS">
+                                <Text text="1000 Ft Coupons" fill="#666666">
+                                    <font>
+                                        <Font size="12"/>
+                                    </font>
+                                </Text>
+                                <Text fx:id="coupon1000Text" text="0 available" fill="#2e7d32">
+                                    <font>
+                                        <Font name="System Bold" size="14"/>
+                                    </font>
+                                </Text>
+                            </VBox>
+                        </HBox>
+                    </VBox>
+
+                </VBox>
+
+                <!-- Logout Button -->
+                <Button text="Logout"
+                        onAction="#handleLogout"
+                        prefWidth="250" prefHeight="50"
+                        style="-fx-background-color: rgba(220, 53, 69, 0.9);
+                               -fx-text-fill: white;
+                               -fx-background-radius: 12;
+                               -fx-font-size: 16;
+                               -fx-font-weight: bold;
+                               -fx-cursor: hand;">
+                    <effect>
+                        <DropShadow radius="8" color="#dc354555"/>
+                    </effect>
+                    <VBox.margin>
+                        <Insets top="10"/>
+                    </VBox.margin>
+                </Button>
+
+            </VBox>
+
+        </VBox>
+
+    </StackPane>
+
+    <!-- Back Button (top-left) -->
+    <Button text="MAIN MENU"
+            AnchorPane.topAnchor="20"
+            AnchorPane.leftAnchor="20"
+            style="-fx-background-color: rgba(255, 255, 255, 0.2);
+                   -fx-text-fill: white;
+                   -fx-font-size: 16;
+                   -fx-font-weight: bold;
+                   -fx-padding: 10 20;
+                   -fx-background-radius: 10;
+                   -fx-cursor: hand;"
+            onAction="#SwitchToMain">
+        <effect>
+            <DropShadow radius="5" color="#00000033"/>
+        </effect>
+    </Button>
+
+    <!-- Footer -->
+    <HBox AnchorPane.bottomAnchor="20"
+          AnchorPane.leftAnchor="0"
+          AnchorPane.rightAnchor="0"
+          alignment="CENTER">
+        <Text text="🍔 Manage your rewards and account"
+              fill="rgba(255, 255, 255, 0.5)">
+            <font>
+                <Font size="11"/>
+            </font>
+        </Text>
+    </HBox>
 
 </AnchorPane>
