@@ -1,14 +1,226 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
+<AnchorPane xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="Controllers.MainController"
-            prefHeight="400.0" prefWidth="600.0">
+            prefWidth="1200" prefHeight="900"
+            minWidth="800" minHeight="600"
+            style="-fx-background-color: linear-gradient(to bottom, #12372A, #1a4d38);">
+
+    <!-- Top Navigation Bar with gradient background -->
+    <HBox AnchorPane.topAnchor="0"
+          AnchorPane.leftAnchor="0"
+          AnchorPane.rightAnchor="0"
+          prefHeight="80"
+          style="-fx-background-color: rgba(46, 139, 87, 0.9); -fx-padding: 15 30;">
+
+        <!-- Username on the left -->
+        <VBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
+            <Text fx:id="UserName" text="Username" fill="WHITE">
+                <font>
+                    <Font name="System Bold" size="24"/>
+                </font>
+                <effect>
+                    <DropShadow radius="3" color="#00000066"/>
+                </effect>
+            </Text>
+            <Text text="Welcome back!" fill="#ADDFAD">
+                <font>
+                    <Font size="14"/>
+                </font>
+            </Text>
+        </VBox>
+
+        <!-- Navigation buttons on the right -->
+        <HBox spacing="15" alignment="CENTER_RIGHT">
+            <Button text="Menu"
+                    onAction="#SwitchToFoods"
+                    prefWidth="120" prefHeight="45"
+                    style="-fx-background-color: #ADDFAD;
+                        -fx-background-radius: 12;
+                        -fx-text-fill: #12372A;
+                        -fx-font-size: 16;
+                        -fx-font-weight: bold;
+                        -fx-cursor: hand;">
+                <effect>
+                    <DropShadow radius="8" color="#00000044"/>
+                </effect>
+            </Button>
+
+            <Button text="Login"
+                    onAction="#SwitchToLogin"
+                    prefWidth="120" prefHeight="45"
+                    style="-fx-background-color: rgba(255, 255, 255, 0.2);
+                        -fx-background-radius: 12;
+                        -fx-text-fill: white;
+                        -fx-font-size: 16;
+                        -fx-font-weight: bold;
+                        -fx-border-color: white;
+                        -fx-border-width: 2;
+                        -fx-border-radius: 12;
+                        -fx-cursor: hand;">
+                <effect>
+                    <DropShadow radius="8" color="#00000044"/>
+                </effect>
+            </Button>
+        </HBox>
+    </HBox>
+
+    <!-- Center Content Area - scales with window -->
+    <StackPane AnchorPane.topAnchor="80"
+               AnchorPane.bottomAnchor="80"
+               AnchorPane.leftAnchor="80"
+               AnchorPane.rightAnchor="80">
+
+        <!-- Main Card Container -->
+        <VBox alignment="CENTER" spacing="40" maxWidth="700">
+
+            <!-- Hero Section -->
+            <VBox alignment="CENTER" spacing="20">
+
+                <!-- Big Burger Emoji/Icon -->
+                <Text text="🍔" fill="WHITE">
+                    <font>
+                        <Font size="120"/>
+                    </font>
+                    <effect>
+                        <DropShadow radius="15" color="#2E8B57AA"/>
+                    </effect>
+                </Text>
+
+                <!-- Main Heading -->
+                <Text text="Mek Dánöldsz" textAlignment="CENTER" fill="#ADDFAD">
+                    <font>
+                        <Font name="System Bold" size="48"/>
+                    </font>
+                    <effect>
+                        <DropShadow radius="10" color="#00000066"/>
+                    </effect>
+                </Text>
+
+                <Text text="Freshly Made. Perfectly Grilled."
+                      textAlignment="CENTER"
+                      fill="#FFFFFF">
+                    <font>
+                        <Font name="System Italic" size="20"/>
+                    </font>
+                </Text>
+            </VBox>
+
+            <!-- Call to Action Card -->
+            <VBox alignment="CENTER" spacing="20"
+                  style="-fx-background-color: rgba(255, 255, 255, 0.95);
+                      -fx-background-radius: 20;
+                      -fx-padding: 40 60;"
+                  maxWidth="550">
+                <effect>
+                    <DropShadow radius="25" spread="0.2" color="#00000055"/>
+                </effect>
+
+                <Text text="Ready to Order?" textAlignment="CENTER" fill="#12372A">
+                    <font>
+                        <Font name="System Bold" size="32"/>
+                    </font>
+                </Text>
+
+                <Text text="Juicy burgers, crispy fries, and more!"
+                      textAlignment="CENTER" wrappingWidth="400"
+                      fill="#666666">
+                    <font>
+                        <Font size="16"/>
+                    </font>
+                </Text>
+
+                <!-- CTA Button -->
+                <HBox spacing="20" alignment="CENTER">
+                    <VBox.margin>
+                        <Insets top="20"/>
+                    </VBox.margin>
+
+                    <Button text="View Menu"
+                            onAction="#SwitchToFoods"
+                            prefWidth="200" prefHeight="55"
+                            style="-fx-background-color: #2E8B57;
+                              -fx-background-radius: 15;
+                              -fx-text-fill: white;
+                              -fx-font-size: 18;
+                              -fx-font-weight: bold;
+                              -fx-cursor: hand;">
+                        <effect>
+                            <DropShadow radius="12" color="#2E8B5766"/>
+                        </effect>
+                    </Button>
+                </HBox>
+
+                <!-- Features -->
+                <HBox spacing="30" alignment="CENTER">
+                    <VBox.margin>
+                        <Insets top="15"/>
+                    </VBox.margin>
+
+                    <VBox alignment="CENTER" spacing="5">
+                        <Text text="🔥" fill="BLACK">
+                            <font>
+                                <Font size="24"/>
+                            </font>
+                        </Text>
+                        <Text text="Fresh Daily" fill="#666666">
+                            <font>
+                                <Font size="12" name="System Bold"/>
+                            </font>
+                        </Text>
+                    </VBox>
+
+                    <VBox alignment="CENTER" spacing="5">
+                        <Text text="⚡" fill="BLACK">
+                            <font>
+                                <Font size="24"/>
+                            </font>
+                        </Text>
+                        <Text text="Fast Service" fill="#666666">
+                            <font>
+                                <Font size="12" name="System Bold"/>
+                            </font>
+                        </Text>
+                    </VBox>
+
+                    <VBox alignment="CENTER" spacing="5">
+                        <Text text="😋" fill="BLACK">
+                            <font>
+                                <Font size="24"/>
+                            </font>
+                        </Text>
+                        <Text text="Delicious" fill="#666666">
+                            <font>
+                                <Font size="12" name="System Bold"/>
+                            </font>
+                        </Text>
+                    </VBox>
+                </HBox>
+            </VBox>
+
+        </VBox>
+    </StackPane>
+
+    <!-- Footer -->
+    <HBox AnchorPane.bottomAnchor="0"
+          AnchorPane.leftAnchor="0"
+          AnchorPane.rightAnchor="0"
+          prefHeight="60"
+          alignment="CENTER"
+          style="-fx-background-color: rgba(0, 0, 0, 0.2);">
+        <Text text="© 2024 Burger House | Fresh Burgers Since 2024"
+              fill="rgba(255, 255, 255, 0.6)">
+            <font>
+                <Font size="12"/>
+            </font>
+        </Text>
+    </HBox>
 
 </AnchorPane>
