@@ -52,6 +52,7 @@ public class DatabaseManager {
                 }
             } catch (Exception ignored) {}
         }
+        connections.clear();
     }
 }
 
