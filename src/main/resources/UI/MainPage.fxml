@@ -1,224 +1,236 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.geometry.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/25"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="Controllers.MainController"
-            prefWidth="1200" prefHeight="900"
-            minWidth="800" minHeight="600"
-            style="-fx-background-color: linear-gradient(to bottom, #12372A, #1a4d38);">
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane minHeight="600" minWidth="800" prefHeight="900" prefWidth="1200" style="-fx-background-color: linear-gradient(to bottom, #12372A, #1a4d38);" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MainController">
 
     <!-- Top Navigation Bar with gradient background -->
-    <HBox AnchorPane.topAnchor="0"
-          AnchorPane.leftAnchor="0"
-          AnchorPane.rightAnchor="0"
-          prefHeight="80"
-          style="-fx-background-color: rgba(46, 139, 87, 0.9); -fx-padding: 15 30;">
+    <HBox prefHeight="80" style="-fx-background-color: rgba(46, 139, 87, 0.9); -fx-padding: 15 30;" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
 
         <!-- Username on the left -->
         <VBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
-            <Text fx:id="UserName" text="Username" fill="WHITE">
+            <Text fx:id="UserName" fill="WHITE" text="Username">
                 <font>
-                    <Font name="System Bold" size="24"/>
+                    <Font name="System Bold" size="24" />
                 </font>
                 <effect>
-                    <DropShadow radius="3" color="#00000066"/>
+                    <DropShadow color="#00000066" radius="3" />
                 </effect>
             </Text>
-            <Text text="Welcome back!" fill="#ADDFAD">
+            <Text fill="#ADDFAD" text="Welcome back!">
                 <font>
-                    <Font size="14"/>
+                    <Font size="14" />
                 </font>
             </Text>
         </VBox>
 
         <!-- Navigation buttons on the right -->
-        <HBox spacing="15" alignment="CENTER_RIGHT">
-            <Button text="Menu"
-                    onAction="#SwitchToFoods"
-                    prefWidth="120" prefHeight="45"
-                    style="-fx-background-color: #ADDFAD;
-                        -fx-background-radius: 12;
-                        -fx-text-fill: #12372A;
-                        -fx-font-size: 16;
-                        -fx-font-weight: bold;
-                        -fx-cursor: hand;">
+        <HBox alignment="CENTER_RIGHT" spacing="15">
+            <Button onAction="#SwitchToFoods" prefHeight="45" prefWidth="120" style="-fx-background-color: #ADDFAD; -fx-background-radius: 12; -fx-text-fill: #12372A; -fx-font-size: 16; -fx-font-weight: bold; -fx-cursor: hand;" text="Menu">
                 <effect>
-                    <DropShadow radius="8" color="#00000044"/>
+                    <DropShadow color="#00000044" radius="8" />
                 </effect>
             </Button>
 
-            <Button text="Login"
-                    onAction="#SwitchToLogin"
-                    prefWidth="120" prefHeight="45"
-                    style="-fx-background-color: rgba(255, 255, 255, 0.2);
-                        -fx-background-radius: 12;
-                        -fx-text-fill: white;
-                        -fx-font-size: 16;
-                        -fx-font-weight: bold;
-                        -fx-border-color: white;
-                        -fx-border-width: 2;
-                        -fx-border-radius: 12;
-                        -fx-cursor: hand;">
+            <Button onAction="#SwitchToLogin" prefHeight="45" prefWidth="120" style="-fx-background-color: rgba(255, 255, 255, 0.2); -fx-background-radius: 12; -fx-text-fill: white; -fx-font-size: 16; -fx-font-weight: bold; -fx-border-color: white; -fx-border-width: 2; -fx-border-radius: 12; -fx-cursor: hand;" text="Login">
                 <effect>
-                    <DropShadow radius="8" color="#00000044"/>
+                    <DropShadow color="#00000044" radius="8" />
                 </effect>
             </Button>
         </HBox>
     </HBox>
 
     <!-- Center Content Area - scales with window -->
-    <StackPane AnchorPane.topAnchor="80"
-               AnchorPane.bottomAnchor="80"
-               AnchorPane.leftAnchor="80"
-               AnchorPane.rightAnchor="80">
+    <StackPane AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="80.0">
 
-        <!-- Main Card Container -->
-        <VBox alignment="CENTER" spacing="40" maxWidth="700">
+        <HBox alignment="CENTER" spacing="40">
 
-            <!-- Hero Section -->
-            <VBox alignment="CENTER" spacing="20">
-
-                <!-- Big Burger Emoji/Icon -->
-                <Text text="🍔" fill="WHITE">
-                    <font>
-                        <Font size="120"/>
-                    </font>
-                    <effect>
-                        <DropShadow radius="15" color="#2E8B57AA"/>
-                    </effect>
-                </Text>
-
-                <!-- Main Heading -->
-                <Text text="Mek Dánöldsz" textAlignment="CENTER" fill="#ADDFAD">
-                    <font>
-                        <Font name="System Bold" size="48"/>
-                    </font>
-                    <effect>
-                        <DropShadow radius="10" color="#00000066"/>
-                    </effect>
-                </Text>
-
-                <Text text="Freshly Made. Perfectly Grilled."
-                      textAlignment="CENTER"
-                      fill="#FFFFFF">
-                    <font>
-                        <Font name="System Italic" size="20"/>
-                    </font>
-                </Text>
-            </VBox>
-
-            <!-- Call to Action Card -->
-            <VBox alignment="CENTER" spacing="20"
-                  style="-fx-background-color: rgba(255, 255, 255, 0.95);
-                      -fx-background-radius: 20;
-                      -fx-padding: 40 60;"
-                  maxWidth="550">
+            <!-- Left Side - Spin the Wheel Card -->
+            <VBox alignment="CENTER" maxWidth="350" spacing="15" style="-fx-background-color: rgba(255, 255, 255, 0.95); -fx-background-radius: 20; -fx-padding: 30;">
                 <effect>
-                    <DropShadow radius="25" spread="0.2" color="#00000055"/>
+                    <DropShadow color="#00000055" radius="25" spread="0.2" />
                 </effect>
 
-                <Text text="Ready to Order?" textAlignment="CENTER" fill="#12372A">
+                <Text fill="#12372A" text="🎡 Spin &amp; Win!" textAlignment="CENTER">
                     <font>
-                        <Font name="System Bold" size="32"/>
+                        <Font name="System Bold" size="28" />
                     </font>
                 </Text>
 
-                <Text text="Juicy burgers, crispy fries, and more!"
-                      textAlignment="CENTER" wrappingWidth="400"
-                      fill="#666666">
+                <Text fill="#666666" text="Try your luck!" textAlignment="CENTER">
                     <font>
-                        <Font size="16"/>
+                        <Font size="14" />
                     </font>
                 </Text>
 
-                <!-- CTA Button -->
-                <HBox spacing="20" alignment="CENTER">
+                <!-- Wheel Container with Arrow -->
+                <StackPane>
                     <VBox.margin>
-                        <Insets top="20"/>
+                        <Insets top="10" bottom="10" />
                     </VBox.margin>
 
-                    <Button text="View Menu"
-                            onAction="#SwitchToFoods"
-                            prefWidth="200" prefHeight="55"
-                            style="-fx-background-color: #2E8B57;
-                              -fx-background-radius: 15;
-                              -fx-text-fill: white;
-                              -fx-font-size: 18;
-                              -fx-font-weight: bold;
-                              -fx-cursor: hand;">
+                    <!-- Arrow Pointer at top -->
+                    <Text fill="#FF6B6B" text="▼" translateY="-110" style="-fx-font-size: 40;">
                         <effect>
-                            <DropShadow radius="12" color="#2E8B5766"/>
+                            <DropShadow color="#FF6B6B88" radius="8" />
                         </effect>
-                    </Button>
-                </HBox>
+                    </Text>
 
-                <!-- Features -->
-                <HBox spacing="30" alignment="CENTER">
+                    <!-- The Wheel Image -->
+                    <ImageView fx:id="myImage" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../images/wheel.png" />
+                        </image>
+                    </ImageView>
+                </StackPane>
+
+                <!-- Spin Button -->
+                <Button fx:id="spin" onAction="#spin" prefHeight="50" prefWidth="180" style="-fx-background-color: #FF6B6B; -fx-background-radius: 15; -fx-text-fill: white; -fx-font-size: 18; -fx-font-weight: bold; -fx-cursor: hand;" text="🎲 SPIN!">
                     <VBox.margin>
-                        <Insets top="15"/>
+                        <Insets top="10" />
                     </VBox.margin>
+                    <effect>
+                        <DropShadow color="#FF6B6B66" radius="12" />
+                    </effect>
+                </Button>
 
-                    <VBox alignment="CENTER" spacing="5">
-                        <Text text="🔥" fill="BLACK">
-                            <font>
-                                <Font size="24"/>
-                            </font>
-                        </Text>
-                        <Text text="Fresh Daily" fill="#666666">
-                            <font>
-                                <Font size="12" name="System Bold"/>
-                            </font>
-                        </Text>
-                    </VBox>
-
-                    <VBox alignment="CENTER" spacing="5">
-                        <Text text="⚡" fill="BLACK">
-                            <font>
-                                <Font size="24"/>
-                            </font>
-                        </Text>
-                        <Text text="Fast Service" fill="#666666">
-                            <font>
-                                <Font size="12" name="System Bold"/>
-                            </font>
-                        </Text>
-                    </VBox>
-
-                    <VBox alignment="CENTER" spacing="5">
-                        <Text text="😋" fill="BLACK">
-                            <font>
-                                <Font size="24"/>
-                            </font>
-                        </Text>
-                        <Text text="Delicious" fill="#666666">
-                            <font>
-                                <Font size="12" name="System Bold"/>
-                            </font>
-                        </Text>
-                    </VBox>
-                </HBox>
+                <Text fill="#999999" text="Get special discounts!" textAlignment="CENTER">
+                    <font>
+                        <Font size="12" />
+                    </font>
+                </Text>
             </VBox>
 
-        </VBox>
+            <!-- Right Side - Main Card Container -->
+            <VBox alignment="CENTER" maxWidth="550" spacing="40">
+
+                <!-- Hero Section -->
+                <VBox alignment="CENTER" spacing="20">
+
+                    <!-- Big Burger Emoji/Icon -->
+                    <Text fill="WHITE" text="🍔">
+                        <font>
+                            <Font size="120" />
+                        </font>
+                        <effect>
+                            <DropShadow color="#2E8B57AA" radius="15" />
+                        </effect>
+                    </Text>
+
+                    <!-- Main Heading -->
+                    <Text fill="#ADDFAD" text="Mek Dánöldsz" textAlignment="CENTER">
+                        <font>
+                            <Font name="System Bold" size="48" />
+                        </font>
+                        <effect>
+                            <DropShadow color="#00000066" radius="10" />
+                        </effect>
+                    </Text>
+
+                    <Text fill="#FFFFFF" text="Freshly Made. Perfectly Grilled." textAlignment="CENTER">
+                        <font>
+                            <Font name="System Italic" size="20" />
+                        </font>
+                    </Text>
+                </VBox>
+
+                <!-- Call to Action Card -->
+                <VBox alignment="CENTER" spacing="20" style="-fx-background-color: rgba(255, 255, 255, 0.95); -fx-background-radius: 20; -fx-padding: 40 60;">
+                    <effect>
+                        <DropShadow color="#00000055" radius="25" spread="0.2" />
+                    </effect>
+
+                    <Text fill="#12372A" text="Ready to Order?" textAlignment="CENTER">
+                        <font>
+                            <Font name="System Bold" size="32" />
+                        </font>
+                    </Text>
+
+                    <Text fill="#666666" text="Juicy burgers, crispy fries, and more!" textAlignment="CENTER" wrappingWidth="400">
+                        <font>
+                            <Font size="16" />
+                        </font>
+                    </Text>
+
+                    <!-- CTA Button -->
+                    <HBox alignment="CENTER" spacing="20">
+                        <VBox.margin>
+                            <Insets top="20" />
+                        </VBox.margin>
+
+                        <Button onAction="#SwitchToFoods" prefHeight="55" prefWidth="200" style="-fx-background-color: #2E8B57; -fx-background-radius: 15; -fx-text-fill: white; -fx-font-size: 18; -fx-font-weight: bold; -fx-cursor: hand;" text="View Menu">
+                            <effect>
+                                <DropShadow color="#2E8B5766" radius="12" />
+                            </effect>
+                        </Button>
+                    </HBox>
+
+                    <!-- Features -->
+                    <HBox alignment="CENTER" spacing="30">
+                        <VBox.margin>
+                            <Insets top="15" />
+                        </VBox.margin>
+
+                        <VBox alignment="CENTER" spacing="5">
+                            <Text fill="BLACK" text="🔥">
+                                <font>
+                                    <Font size="24" />
+                                </font>
+                            </Text>
+                            <Text fill="#666666" text="Fresh Daily">
+                                <font>
+                                    <Font name="System Bold" size="12" />
+                                </font>
+                            </Text>
+                        </VBox>
+
+                        <VBox alignment="CENTER" spacing="5">
+                            <Text fill="BLACK" text="⚡">
+                                <font>
+                                    <Font size="24" />
+                                </font>
+                            </Text>
+                            <Text fill="#666666" text="Fast Service">
+                                <font>
+                                    <Font name="System Bold" size="12" />
+                                </font>
+                            </Text>
+                        </VBox>
+
+                        <VBox alignment="CENTER" spacing="5">
+                            <Text fill="BLACK" text="😋">
+                                <font>
+                                    <Font size="24" />
+                                </font>
+                            </Text>
+                            <Text fill="#666666" text="Delicious">
+                                <font>
+                                    <Font name="System Bold" size="12" />
+                                </font>
+                            </Text>
+                        </VBox>
+                    </HBox>
+                </VBox>
+
+            </VBox>
+        </HBox>
     </StackPane>
 
     <!-- Footer -->
-    <HBox AnchorPane.bottomAnchor="0"
-          AnchorPane.leftAnchor="0"
-          AnchorPane.rightAnchor="0"
-          prefHeight="60"
-          alignment="CENTER"
-          style="-fx-background-color: rgba(0, 0, 0, 0.2);">
-        <Text text="© 2024 Burger House | Fresh Burgers Since 2024"
-              fill="rgba(255, 255, 255, 0.6)">
+    <HBox alignment="CENTER" prefHeight="60" style="-fx-background-color: rgba(0, 0, 0, 0.2);" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+        <Text fill="rgba(255, 255, 255, 0.6)" text="© 2024 Burger House | Fresh Burgers Since 2024">
             <font>
-                <Font size="12"/>
+                <Font size="12" />
             </font>
         </Text>
     </HBox>
