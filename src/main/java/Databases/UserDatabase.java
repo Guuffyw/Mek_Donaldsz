@@ -153,5 +153,22 @@ public class UserDatabase {
             }
         }
     }
-}
 
+    public void update500ByUsername(String username, int newBalance) throws SQLException {
+        String sql = "UPDATE user_profiles SET coupons_500 = ? WHERE username = ?";
+        try (var stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, newBalance);
+            stmt.setString(2, username);
+            stmt.executeUpdate();
+        }
+    }
+
+    public void update1000ByUsername(String username, int newBalance) throws SQLException {
+        String sql = "UPDATE user_profiles SET coupons_1000 = ? WHERE username = ?";
+        try (var stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, newBalance);
+            stmt.setString(2, username);
+            stmt.executeUpdate();
+        }
+    }
+}
